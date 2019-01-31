@@ -46,10 +46,10 @@ class EventsFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2019-01-31 04:29:38',
-                'modified' => '2019-01-31 04:29:38',
-                'event_start_time' => '2019-01-31 04:29:38',
-                'event_finish_time' => '2019-01-31 04:29:38'
+                'created' => '2019-01-31 08:20:36',
+                'modified' => '2019-01-31 08:20:36',
+                'event_start_time' => '2019-01-31 08:20:36',
+                'event_finish_time' => '2019-01-31 08:20:36'
             ],
         ];
         parent::init();
