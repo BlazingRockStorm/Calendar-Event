@@ -18,14 +18,16 @@ class EventSeeder extends AbstractSeed
             [
                 'name' => 'foo',
                 'description' => 'Quan rat dep trai',
-                'event_date' => date('Y-m-d H:i:s'),
+                'event_start_time' => date('Y-m-d H:i:s'),
+                'event_finish_time' => date('Y-m-d H:i:s'),
                 'created' => date('Y-m-d H:i:s'),
                 'modified' => date('Y-m-d H:i:s'),
             ],
             [
                 'name' => 'bar',
                 'description' => 'Quan rat dep trai',
-                'event_date' => date('Y-m-d H:i:s'),
+                'event_start_time' => date('Y-m-d H:i:s'),
+                'event_finish_time' => date('Y-m-d H:i:s'),
                 'created' => date('Y-m-d H:i:s'),
                 'modified' => date('Y-m-d H:i:s'),
             ],
