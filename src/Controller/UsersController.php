@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -35,7 +36,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
 
         $this->set('user', $user);
@@ -71,7 +72,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -103,5 +104,47 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    // Login
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect(['controller' => 'events']);
+            }
+            // Bad Login
+            $this->Flash->error('Incorrect Login');
+        }
+    }
+
+    // Logout
+    public function logout()
+    {
+        $this->Flash->success('You are logged out');
+        return $this->redirect($this->Auth->logout());
+    }
+
+    public function register()
+    {
+        $user = $this->Users->newEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success('You are registered and can login');
+                return $this->redirect(['action' => 'login']);
+            } else {
+                $this->Flash->error('You are not registered');
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialzie', ['user']);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['register']);
     }
 }
